@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Items from './components/Items'
 
 const App = () => {
 
@@ -28,28 +29,20 @@ const App = () => {
   }, [])
 
   const deviceNames = []
+
   for (let key in deviceTree) {
-    console.log('------------------------------');
-    console.log('deviceName: ', key);
     deviceNames.push(key)
-    const currentDevice = deviceTree[key][0]
-    for (let field in currentDevice) {
-      console.log('field:', field, '- value:', currentDevice[field]);
-    }
   }
 
-  let list = deviceNames.map(item => {
-    if (deviceTreeTypeMap[item]) {
-      // console.log('deviceTreeTypeMap[item][0].merchantIdx: ', deviceTreeTypeMap[item][0].merchantIdx);
-      return <ul contentEditable="true" key={item}>{item}</ul>
-    } else {
-      return <ul contentEditable="false" key={item}>
-        {item}
-      </ul>
+  let list = deviceNames.map(name => {
+    const currentDevice = deviceTree[name][0]
 
-    }
-  }
-  )
+    return (<ul key={name}>
+      {name}
+      <Items currentDevice={currentDevice} />
+    </ul>)
+
+  })
 
   return (
     <>
