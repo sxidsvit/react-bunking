@@ -27,15 +27,29 @@ const App = () => {
     fetchData('db.json')
   }, [])
 
-  const modNames = []
+  const deviceNames = []
   for (let key in deviceTree) {
-    modNames.push(deviceTree[key][0].modName)
+    console.log('------------------------------');
+    console.log('deviceName: ', key);
+    deviceNames.push(key)
+    const currentDevice = deviceTree[key][0]
+    for (let field in currentDevice) {
+      console.log('field:', field, '- value:', currentDevice[field]);
+    }
   }
 
-  let list = modNames.map(item => {
-    return `<div>${item}</div>`
-  }).join('')
-  console.log(typeof list);
+  let list = deviceNames.map(item => {
+    if (deviceTreeTypeMap[item]) {
+      // console.log('deviceTreeTypeMap[item][0].merchantIdx: ', deviceTreeTypeMap[item][0].merchantIdx);
+      return <ul contentEditable="true" key={item}>{item}</ul>
+    } else {
+      return <ul contentEditable="false" key={item}>
+        {item}
+      </ul>
+
+    }
+  }
+  )
 
   return (
     <>
