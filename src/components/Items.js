@@ -1,5 +1,5 @@
 import React from 'react';
-import ulList from '../helpers'
+import { ulList } from '../helpers'
 
 const Items = ({ currentItems }) => {
 
@@ -8,7 +8,7 @@ const Items = ({ currentItems }) => {
     return (<li key={key}>
       {key}: {
         Array.isArray(currentItems[key])
-          ? ulList(currentItems[key], key)
+          ? ulList(currentItems[key])
           : currentItems[key]
       }
     </li>)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Items from './components/Items'
+import { ulList, fetchData } from './helpers'
 
 const App = () => {
 
@@ -7,51 +7,24 @@ const App = () => {
   // eslint-disable-next-line
   const [deviceTreeTypeMap, setDeviceTreeTypeMap] = useState({})
 
-
-
   useEffect(() => {
-    async function fetchData(url) {
-      try {
-        const response = await fetch(url)
-        const result = await response.json()
-        const data = await result.api
-        const { deviceTree, deviceTreeTypeMap } = await data
 
-        localStorage.setItem('deviceTree', JSON.stringify(deviceTree))
-        localStorage.setItem('deviceTreeTypeMap', JSON.stringify(deviceTreeTypeMap))
-
-        setDeviceTree(deviceTree)
-        setDeviceTreeTypeMap(deviceTreeTypeMap)
-      } catch (err) {
-        console.log(err)
-      }
-    }
     fetchData('db.json')
+
+    setDeviceTree(JSON.parse(localStorage.getItem('deviceTree')))
+    setDeviceTreeTypeMap(JSON.parse(localStorage.getItem('deviceTreeTypeMap')))
+
   }, [])
 
   const deviceNames = []
-
   for (let key in deviceTree) {
     deviceNames.push(key)
   }
 
   let list = []
-  deviceNames.map(name => {
-    const numberObjectsInArray = deviceTree[name].length
-    for (let objNum = 0; objNum < numberObjectsInArray; objNum++) {
-
-      const currentDevice = deviceTree[name][objNum]
-
-      if (Object.keys(currentDevice).length !== 0) {
-        let currentUlList = (<ul key={name}>
-          {name}
-          <Items currentItems={currentDevice} />
-        </ul>)
-        list.push(currentUlList)
-      }
-    }
-    return list
-  })
+  deviceNames.map(name =>
+    list.push(ulList(deviceTree[name], name))
+  )
 
   return (
     <>

@@ -1,7 +1,10 @@
 import React from 'react'
 import Items from './components/Items'
 
-const ulList = (arrayWithObjects, listName) => {
+
+//  ulList 
+
+export const ulList = (arrayWithObjects, listName) => {
   let currentUlList = ''
 
   const numberObjectsInArray = arrayWithObjects.length
@@ -19,4 +22,18 @@ const ulList = (arrayWithObjects, listName) => {
   return currentUlList
 }
 
-export default ulList
+//  fetchData 
+
+export async function fetchData(url) {
+  try {
+    const response = await fetch(url)
+    const result = await response.json()
+    const data = await result.api
+    const { deviceTree, deviceTreeTypeMap } = await data
+
+    localStorage.setItem('deviceTree', JSON.stringify(deviceTree))
+    localStorage.setItem('deviceTreeTypeMap', JSON.stringify(deviceTreeTypeMap))
+  } catch (err) {
+    console.log(err)
+  }
+}
