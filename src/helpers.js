@@ -15,6 +15,7 @@ export const ulList = (arrayWithObjects, listName) => {
     if (Object.keys(currentObject).length !== 0) {
       currentUlList = (
         <ul key={listName}>
+          {listName}
           <Items currentItems={currentObject} />
         </ul>)
     }
