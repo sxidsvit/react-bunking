@@ -4,6 +4,7 @@ import Items from './components/Items'
 const App = () => {
 
   const [deviceTree, setDeviceTree] = useState({})
+  // eslint-disable-next-line
   const [deviceTreeTypeMap, setDeviceTreeTypeMap] = useState({})
 
 
@@ -35,26 +36,27 @@ const App = () => {
   }
 
   let list = []
-  list = deviceNames.map(name => {
-    objNum < numberOfObjectsinArray; objNum++) {
-    console.log('numberOfObjectsinArray: ', numberOfObjectsinArray);
+  deviceNames.map(name => {
+    const numberObjectsInArray = deviceTree[name].length
+    for (let objNum = 0; objNum < numberObjectsInArray; objNum++) {
 
-    const currentDevice = deviceTree[name][0]
+      const currentDevice = deviceTree[name][objNum]
 
-    let currentUlList = (<ul key={name}>
-      {name}
-      <Items currentDevice={currentDevice} />
-    </ul>)
-    list.push(currentUlList)
-  }
-  return list
-})
+      let currentUlList = (<ul key={name}>
+        {name}
+        <Items currentDevice={currentDevice} />
+      </ul>)
+      list.push(currentUlList)
+    }
+    return list
+  })
+  console.log('list: ', list);
 
-return (
-  <>
-    {list}
-  </>
-)
+  return (
+    <>
+      {list}
+    </>
+  )
 }
 
 export default App;
