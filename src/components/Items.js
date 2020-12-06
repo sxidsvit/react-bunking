@@ -1,21 +1,22 @@
 import React from 'react';
+import ulList from '../helpers'
 
-const Items = ({ currentDevice }) => {
+const Items = ({ currentItems }) => {
 
-  const keys = Object.keys(currentDevice)
-  const currentDeviceList = keys.map(key => {
+  const keys = Object.keys(currentItems)
+  const currentItemsList = keys.map(key => {
     return (<li key={key}>
       {key}: {
-        Array.isArray(currentDevice[key])
-          ? 'массив с объектами'
-          : currentDevice[key]
+        Array.isArray(currentItems[key])
+          ? ulList(currentItems[key], key)
+          : currentItems[key]
       }
     </li>)
   })
 
   return (
     <>
-      {currentDeviceList}
+      {currentItemsList}
     </>
   )
 }

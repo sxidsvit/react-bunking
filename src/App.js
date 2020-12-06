@@ -42,15 +42,16 @@ const App = () => {
 
       const currentDevice = deviceTree[name][objNum]
 
-      let currentUlList = (<ul key={name}>
-        {name}
-        <Items currentDevice={currentDevice} />
-      </ul>)
-      list.push(currentUlList)
+      if (Object.keys(currentDevice).length !== 0) {
+        let currentUlList = (<ul key={name}>
+          {name}
+          <Items currentItems={currentDevice} />
+        </ul>)
+        list.push(currentUlList)
+      }
     }
     return list
   })
-  console.log('list: ', list);
 
   return (
     <>
