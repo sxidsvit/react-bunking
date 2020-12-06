@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Items = ({ currentDevice }) => {
-  console.log('currentDevice: ', currentDevice);
 
   const keys = Object.keys(currentDevice)
   const currentDeviceList = keys.map(key => {
