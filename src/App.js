@@ -34,21 +34,27 @@ const App = () => {
     deviceNames.push(key)
   }
 
-  let list = deviceNames.map(name => {
+  let list = []
+  list = deviceNames.map(name => {
+    objNum < numberOfObjectsinArray; objNum++) {
+    console.log('numberOfObjectsinArray: ', numberOfObjectsinArray);
+
     const currentDevice = deviceTree[name][0]
 
-    return (<ul key={name}>
+    let currentUlList = (<ul key={name}>
       {name}
       <Items currentDevice={currentDevice} />
     </ul>)
+    list.push(currentUlList)
+  }
+  return list
+})
 
-  })
-
-  return (
-    <>
-      {list}
-    </>
-  )
+return (
+  <>
+    {list}
+  </>
+)
 }
 
 export default App;
