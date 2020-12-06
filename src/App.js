@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react'
 
-function App() {
+const App = () => {
+
+  const [deviceTree, setDeviceTree] = useState({})
+  const [deviceTreeTypeMap, setDeviceTreeTypeMap] = useState({})
+
+  useEffect(() => {
+    console.log('useEffect ...')
+    async function fetchData(url) {
+      try {
+        const response = await fetch(url)
+        const result = await response.json()
+        const data = await result.api
+        console.log('data: ', data);
+        const { deviceTree, deviceTreeTypeMap } = await data
+
+        localStorage.setItem('deviceTree', JSON.stringify(deviceTree))
+        localStorage.setItem('deviceTreeTypeMap', JSON.stringify(deviceTreeTypeMap))
+
+        setDeviceTree(deviceTree)
+        setDeviceTreeTypeMap(deviceTreeTypeMap)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    fetchData('/db.json')
+  }, [])
+
+  console.log('deviceTree: ', deviceTree);
+  const modNames = []
+  for (let key in deviceTree) {
+    console.log('deviceTree[key][0].modName: ', deviceTree[key][0].modName);
+    modNames.push(deviceTree[key][0].modName)
+  }
+  console.log('modNames: ', modNames);
+
+  const list = 'Sergo'
+  // const list = modNames.map(item => (`<div>${item}</div>`)).json(' ')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    { list }
+  )
 }
 
 export default App;
