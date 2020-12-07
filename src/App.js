@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ulList, fetchData } from './helpers'
+import { ulList, fetchData, setElementAttribute } from './helpers'
 
 const App = () => {
 
@@ -14,6 +14,11 @@ const App = () => {
     setDeviceTree(JSON.parse(localStorage.getItem('deviceTree')))
     setDeviceTreeTypeMap(JSON.parse(localStorage.getItem('deviceTreeTypeMap')))
 
+    setTimeout(() => {
+      setElementAttribute(["POS", "merchantIdx"])
+      setElementAttribute(["ProductDispenser", "count"])
+    }, 1000);
+
   }, [])
 
   const deviceNames = []
@@ -25,9 +30,6 @@ const App = () => {
   for (let key in deviceTreeTypeMap) {
     deviceMapNames.push(key)
   }
-
-
-  console.log('deviceMapNames: ', deviceMapNames);
 
   let list = []
   deviceNames.map(name =>
