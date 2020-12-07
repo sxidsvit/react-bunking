@@ -15,7 +15,7 @@ const App = () => {
 
     setTimeout(() => {
       getEditableElements().map(data => setElementAttribute(data))
-    }, 1000);
+    }, 2000);
 
   }, [])
 
