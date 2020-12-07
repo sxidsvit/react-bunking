@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ulList, fetchData, setElementAttribute } from './helpers'
+import { ulList, fetchData, setElementAttribute, getEditableElements } from './helpers'
 
 const App = () => {
 
@@ -26,10 +26,8 @@ const App = () => {
     deviceNames.push(key)
   }
 
-  const deviceMapNames = []
-  for (let key in deviceTreeTypeMap) {
-    deviceMapNames.push(key)
-  }
+  const editableElements = getEditableElements()
+  console.log('App - editableElements: ', editableElements);
 
   let list = []
   deviceNames.map(name =>
