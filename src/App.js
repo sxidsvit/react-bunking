@@ -4,8 +4,7 @@ import { ulList, fetchData, setElementAttribute, getEditableElements } from './h
 const App = () => {
 
   const [deviceTree, setDeviceTree] = useState({})
-  // eslint-disable-next-line
-  const [deviceTreeTypeMap, setDeviceTreeTypeMap] = useState({})
+  const [, setDeviceTreeTypeMap] = useState({})
 
   useEffect(() => {
 
@@ -15,8 +14,7 @@ const App = () => {
     setDeviceTreeTypeMap(JSON.parse(localStorage.getItem('deviceTreeTypeMap')))
 
     setTimeout(() => {
-      setElementAttribute(["POS", "merchantIdx"])
-      setElementAttribute(["ProductDispenser", "count"])
+      getEditableElements().map(data => setElementAttribute(data))
     }, 1000);
 
   }, [])
@@ -25,9 +23,6 @@ const App = () => {
   for (let key in deviceTree) {
     deviceNames.push(key)
   }
-
-  const editableElements = getEditableElements()
-  console.log('App - editableElements: ', editableElements);
 
   let list = []
   deviceNames.map(name =>
