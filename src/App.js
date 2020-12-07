@@ -21,6 +21,14 @@ const App = () => {
     deviceNames.push(key)
   }
 
+  const deviceMapNames = []
+  for (let key in deviceTreeTypeMap) {
+    deviceMapNames.push(key)
+  }
+
+
+  console.log('deviceMapNames: ', deviceMapNames);
+
   let list = []
   deviceNames.map(name =>
     list.push(ulList(deviceTree[name], name))

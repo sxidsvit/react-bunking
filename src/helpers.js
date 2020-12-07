@@ -14,7 +14,7 @@ export const ulList = (arrayWithObjects, listName) => {
 
     if (Object.keys(currentObject).length !== 0) {
       currentUlList = (
-        <ul key={listName}>
+        <ul key={listName} data-name={listName}>
           {listName}
           <Items currentItems={currentObject} />
         </ul>)
@@ -38,3 +38,12 @@ export async function fetchData(url) {
     console.log(err)
   }
 }
+
+export const setElementAttribute = (arr) => {
+  const elem = document.getElementById('root')
+  const nodeName = elem.querySelector(`[data-name=${arr[0]}]`)
+  nodeName.querySelector(`[data-key=${arr[1]}`).setAttribute("contentEditable", true)
+  nodeName.querySelector(`[data-key=${arr[1]}`).style.color = "red"
+}
+
+// setElementAttribute(["POS", "merchantIdx"])
