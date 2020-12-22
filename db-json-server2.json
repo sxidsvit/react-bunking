@@ -1,6 +1,5 @@
 {
-  "CardReader": [
-    {
+  "CardReader": [{
       "id": 1,
       "driver": "MicroelectronicaNFC",
       "modName": "CardReader",
@@ -37,75 +36,92 @@
       "id": 4
     }
   ],
-  "CashAcceptor": [
-    {
+  "CashAcceptor": [{
+      "id": 1,
       "driver": "ID003",
       "modName": "Money",
       "modVersion": 3,
       "port": "/dev/ttyS0",
       "status": 0,
       "type": "JCM",
-      "version": "S(UKR)-03-MW SM-BDP04V029-21 28FEB17     "
+      "version": "S(UKR)-03-MW SM-BDP04V029-21 28FEB17"
+    },
+    {
+      "id": 2,
+      "driver": "ID003",
+      "modName": "Money",
+      "modVersion": 4,
+      "port": "/dev/ttyS0",
+      "status": 1,
+      "type": "JCM",
+      "version": "S(UKR)-03-MW SM-BDP04V029-21 28FEB17"
+    },
+    {
+      "id": 3,
+      "driver": "ID004",
+      "modName": "Money",
+      "modVersion": 3,
+      "port": "/dev/ttyS0",
+      "status": 2,
+      "type": "JCM",
+      "version": "S(UKR)-03-MW SM-BDP04V029-21 28FEB17"
+    },
+    {
+      "driver": "ID006",
+      "modName": "Money",
+      "modVersion": 5,
+      "port": "/dev/ttyS0",
+      "status": 2,
+      "type": "JCM",
+      "version": "S(UKR)-03-MW SM-BDP04V029-21 28FEB17",
+      "id": 4
     }
   ],
-  "CashDispenser": [
-    {
-      "modName": "Dispenser",
-      "modVersion": 2,
-      "products": []
-    }
-  ],
-  "POS": [
-    {
-      "driver": "Ingenico",
-      "modName": "POS",
-      "modVersion": 1,
-      "options": [
-        {},
-        {
-          "merchantIdx": "1"
-        }
-      ],
-      "port": "/dev/serial/by-id/usb-INGENICO_Ingenico_iUP250-if00",
-      "status": 0
-    }
-  ],
-  "Printer": [
-    {
-      "driver": "SeaRRO",
-      "modName": "Printer",
-      "modVersion": 1,
-      "papperState": -1,
-      "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
-      "status": 0
-    }
-  ],
-  "ProductDispenser": [
-    {
-      "driver": "ICT-CVD",
-      "modName": "Dispenser",
-      "modVersion": 2,
-      "port": "/dev/ttyS5",
-      "products": [
-        {
-          "class": "Fare card",
-          "count": 75,
-          "name": "Kharkov fare card"
-        }
-      ],
-      "status": 0
-    }
-  ],
-  "deviceTreeTypeMap": [
-    {
+  "CashDispenser": [{
+    "modName": "Dispenser",
+    "modVersion": 2,
+    "products": []
+  }],
+  "POS": [{
+    "driver": "Ingenico",
+    "modName": "POS",
+    "modVersion": 1,
+    "options": [{},
+      {
+        "merchantIdx": "1"
+      }
+    ],
+    "port": "/dev/serial/by-id/usb-INGENICO_Ingenico_iUP250-if00",
+    "status": 0
+  }],
+  "Printer": [{
+    "driver": "SeaRRO",
+    "modName": "Printer",
+    "modVersion": 1,
+    "papperState": -1,
+    "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+    "status": 0
+  }],
+  "ProductDispenser": [{
+    "driver": "ICT-CVD",
+    "modName": "Dispenser",
+    "modVersion": 2,
+    "port": "/dev/ttyS5",
+    "products": [{
+      "class": "Fare card",
+      "count": 75,
+      "name": "Kharkov fare card"
+    }],
+    "status": 0
+  }],
+  "deviceTreeTypeMap": [{
       "CashDispenser": {
         "products": []
       }
     },
     {
       "POS": {
-        "options": [
-          {},
+        "options": [{},
           {
             "merchantIdx": "number"
           },
