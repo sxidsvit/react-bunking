@@ -78,6 +78,7 @@
     }
   ],
   "CashDispenser": [{
+    "id": 1,
     "modName": "Dispenser",
     "modVersion": 2,
     "products": []
@@ -95,13 +96,33 @@
     "status": 0
   }],
   "Printer": [{
-    "driver": "SeaRRO",
-    "modName": "Printer",
-    "modVersion": 1,
-    "papperState": -1,
-    "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
-    "status": 0
-  }],
+      "id": 1,
+      "driver": "SeaRRO",
+      "modName": "Printer",
+      "modVersion": 1,
+      "papperState": -1,
+      "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "driver": "SeaRRO",
+      "modName": "Printer",
+      "modVersion": 2,
+      "papperState": 1,
+      "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "driver": "SeaRRO",
+      "modName": "Printer",
+      "modVersion": 3,
+      "port": "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0",
+      "status": 0,
+      "papperState": "1"
+    }
+  ],
   "ProductDispenser": [{
     "driver": "ICT-CVD",
     "modName": "Dispenser",
