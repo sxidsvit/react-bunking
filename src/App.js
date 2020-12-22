@@ -1,39 +1,18 @@
-import { useEffect, useState } from 'react'
-import { ulList, fetchData, setElementAttribute, getEditableElements } from './helpers'
+import React from 'react'
+import { Admin, Resource } from 'react-admin'
+import restProvider from 'ra-data-simple-rest'
+import CardReaderList from './adminComponents/CardReader/CardReaderList'
+import CardReaderCreate from './adminComponents/CardReader/CardReaderCreate'
+import CardReaderEdit from './adminComponents/CardReader/CardReaderEdit'
+
 
 const App = () => {
-
-  const [deviceTree, setDeviceTree] = useState({})
-  const [, setDeviceTreeTypeMap] = useState({})
-
-  useEffect(() => {
-
-    fetchData('db.json')
-
-    setDeviceTree(JSON.parse(localStorage.getItem('deviceTree')))
-    setDeviceTreeTypeMap(JSON.parse(localStorage.getItem('deviceTreeTypeMap')))
-
-    setTimeout(() => {
-      getEditableElements().map(data => setElementAttribute(data))
-    }, 2000);
-
-  }, [])
-
-  const deviceNames = []
-  for (let key in deviceTree) {
-    deviceNames.push(key)
-  }
-
-  let list = []
-  deviceNames.map(name =>
-    list.push(ulList(deviceTree[name], name))
-  )
-
   return (
-    <>
-      {list}
-    </>
+    <Admin dataProvider={restProvider('http://localhost:3000')}>
+      <Resource name='CardReader' list={CardReaderList}
+        create={CardReaderCreate} edit={CardReaderEdit} />
+    </Admin>
   )
 }
 
-export default App;
+export default App
