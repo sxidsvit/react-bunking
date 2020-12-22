@@ -22,6 +22,12 @@
 
 # RACT-ADMIN
 
+### Промежуточная реализация
+
+![Картинка](./public/react-admin-demo.gif)
+
+---
+
 #### Устанавливаем JSON-server: get a full fake REST API with zero coding
 
 ```js
