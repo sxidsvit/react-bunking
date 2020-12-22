@@ -17,3 +17,26 @@
 ![Картинка](./public/demo.gif)
 
 ---
+
+======================================
+
+# RACT-ADMIN
+
+Устанавливаем JSON-server: get a full fake REST API with zero coding
+
+```js
+npm i json-server
+npm i concurrently
+```
+
+package.json
+
+```js
+"proxy": "http://localhost:5000",
+
+"start": "react-scripts start",
+
+"server": "json-server --watcdb-json-server.json --port 5000",
+
+"dev": "concurrently \"npm run start\" \"npm run server\" ",
+```
